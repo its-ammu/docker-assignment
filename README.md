@@ -62,13 +62,13 @@ $ sudo docker run -d --network=host intern/phptodo3
 Warning: mysqli::__construct(): The server requested authentication method 
 unknown to the client [caching_sha2_password] in /var/www/html/index.php on line 10
 ```
-- It seems like newer mysql versions dont have password authentication as the default method they use a different method called as caching_sha2_password and so we have to change it in the `mysql.conf` file. So added the following lines in it. `mysql.conf` is found in `/etc/mysql/`
+- It seems like newer mysql versions dont have password authentication as the default method, They use a different method called as `caching_sha2_password` and so we have to change it in the `mysql.conf` file. So added the following lines in it. `mysql.conf` is found in `/etc/mysql/`
 ```conf
 [mysqld]
 default_authentication_plugin= mysql_native_password
 ```
-- But I still got a access denied error but the necessary permissions were given. When I created a new user and did the same it worked. 
-- It seems like the previous user got corrupted. I could event change its password with root access. The old user's way of authentication got stuck in a weird state after we updated the configuration that it no longer allowed us access. Once i dropped and created another one the same way with the same name it worked.
+- But I still got a access denied error even though the necessary permissions were given. When I created a new user and did the same it worked. 
+- It seems like the previous user got corrupted. I could'nt even change its password with root access. The old user's way of authentication got stuck in a weird state after we updated the configuration that it no longer allowed us access. Once i dropped and created another one the same way with the same name it worked.
 
 ## Oct 18
   - [x] Docker beginners course
