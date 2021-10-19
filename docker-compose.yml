@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+        mysql:
+                image: intern/mysqltodo 
+                ports:
+                        - "3306:3306"
+                network_mode: "host"
+                volumes: 
+                        - db-data:/var/lib/mysql
+                secrets:
+                        - db_pass
+                environment:
+                        MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_pass
+        php:
+                image: intern/phptodo
+                ports:
+                        - "80:80"
+                network_mode: "host"
+                depends_on:
+                        - mysql
+                volumes:
+                        - php-data:/var/www/html
+                secrets:
+                        - db_user
+                        - db_pass
+volumes:
+        db-data:
+        php-data:
+secrets:
+        db_user:
+                file: ./mysql_user.txt
+        db_pass:
+                file: ./mysql_password.txt

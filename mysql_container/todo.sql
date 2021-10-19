@@ -1,0 +1,6 @@
+CREATE DATABASE todo;
+USE todo;
+CREATE TABLE tasks(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,task varchar(255));
+CREATE USER 'php'@mysql IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'php'@mysql;
+FLUSH PRIVILEGES;
