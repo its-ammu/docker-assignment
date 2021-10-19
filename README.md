@@ -113,8 +113,8 @@ sudo docker run -d --network=host -e MYSQL_ROOT_PASSWORD='mypassword' intern/mys
 ## Oct 19
 - [x] adding secrets and volumes to docker-compose
 - [x] check if running and connected (solve errors)
-- [ ] finalise and revise
-- [ ] Upload to git (For backup)
+- [x] finalise and revise
+- [x] Upload to git (For backup)
 - [ ] kodekloud courses
 ### Files
 ```yaml
