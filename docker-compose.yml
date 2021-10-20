@@ -4,13 +4,18 @@ services:
                 image: intern/mysqltodo 
                 ports:
                         - "3306:3306"
+                command: --default-authentication-plugin=mysql_native_password
                 network_mode: "host"
                 volumes: 
                         - db-data:/var/lib/mysql
                 secrets:
                         - db_pass
+                        - db_user
                 environment:
                         MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_pass
+                        MYSQL_USER_FILE: /run/secrets/db_user
+                        MYSQL_PASSWORD_FILE: /run/secrets/db_pass
+                        MYSQL_DATABASE: todo
         php:
                 image: intern/phptodo
                 ports:
