@@ -2,8 +2,8 @@
 ini_set('display_errors', 1);
 
 $servername = "127.0.0.1";
-$username = rtrim(file_get_contents("/run/secrets/db_user"));
-$password = rtrim(file_get_contents("/run/secrets/db_pass"));
+$username = "intern";
+$password = "internpass";
 $db = "todo";
 
 // Create connection
