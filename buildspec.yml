@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+    - echo In the pre_build phase...
+  build:
+    commands:
+    - echo Build started on `date`
+  post_build:
+    commands:
+    - echo Build completed on `date`
+    - docker build -t intern/app:php .
+    - cd mysql_container
+    - docker build -t intern/app:mysql .
+    - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s5o7d0z2
+    - docker tag intern/app:php public.ecr.aws/s5o7d0z2/jenkins-av:php
+    - docker tag intern/app:mysql public.ecr.aws/s5o7d0z2/jenkins-av:mysql
+artifacts:
+  files:
+  - Dockerfile
+  - mysql_container/Dockerfile
