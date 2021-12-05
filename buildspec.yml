@@ -6,9 +6,6 @@ phases:
   build:
     commands:
     - echo Build started on `date`
-  post_build:
-    commands:
-    - echo Build completed on `date`
     - docker build -t intern/app:php .
     - cd mysql_container
     - docker build -t intern/app:mysql .
@@ -17,3 +14,7 @@ phases:
     - docker tag intern/app:mysql public.ecr.aws/s5o7d0z2/jenkins-av:mysql
     - docker push public.ecr.aws/s5o7d0z2/jenkins-av:php
     - docker push public.ecr.aws/s5o7d0z2/jenkins-av:mysql
+  post_build:
+    commands:
+    - echo Build completed on `date`
+   
