@@ -1,0 +1,10 @@
+[
+  {
+    "name": "phpapp",
+    "imageUri": "public.ecr.aws/s5o7d0z2/jenkins-av:php"
+  },
+  {
+    "name": "mysql",
+    "imageUri": "public.ecr.aws/s5o7d0z2/jenkins-av:mysql"
+  }
+]
