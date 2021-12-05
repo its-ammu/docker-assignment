@@ -6,14 +6,14 @@ phases:
   build:
     commands:
     - echo Build started on `date`
-    - docker build -t intern/app:php .
-    - cd mysql_container
-    - docker build -t intern/app:mysql .
-    - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s5o7d0z2
-    - docker tag intern/app:php public.ecr.aws/s5o7d0z2/jenkins-av:php
-    - docker tag intern/app:mysql public.ecr.aws/s5o7d0z2/jenkins-av:mysql
-    - docker push public.ecr.aws/s5o7d0z2/jenkins-av:php
-    - docker push public.ecr.aws/s5o7d0z2/jenkins-av:mysql
+   #- docker build -t intern/app:php .
+   #- cd mysql_container
+   #- docker build -t intern/app:mysql .
+   #- aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s5o7d0z2
+   #- docker tag intern/app:php public.ecr.aws/s5o7d0z2/jenkins-av:php
+   #- docker tag intern/app:mysql public.ecr.aws/s5o7d0z2/jenkins-av:mysql
+   #- docker push public.ecr.aws/s5o7d0z2/jenkins-av:php
+   #- docker push public.ecr.aws/s5o7d0z2/jenkins-av:mysql
   post_build:
     commands:
     - echo Build completed on `date`
